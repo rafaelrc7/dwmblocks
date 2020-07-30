@@ -1,20 +1,17 @@
 //Modify this file to change what commands output to your statusbar, and recompile using the make command.
+
+#define PATH(name)			"/home/rafael/.local/bin/blocks/"name
+
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
-	{"", "cat ~/.pacupdate | sed /📦0/d",					0,		9},
 	
-	{"🧠", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,		0},
+	{"",		PATH("update.sh"),		0,					5},
 
-	{"", "~/bin/statusbar/volume",						0,		10},
+	{"",		PATH("time.sh"),		1,					1},
 
-	{"☀", "xbacklight | sed 's/\\..*//'",					0,		11},
-	
-	{"", "~/bin/statusbar/battery",						5,		0},
+	{"",		PATH("calendar.sh"),	0,					2},
 
-	{"🌡", "sensors | awk '/^temp1:/{print $2}'",				5,		0},
-
-	{"", "~/bin/statusbar/clock",						5,		0},
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
-static char delim = '|';
+static char delim = ' ';
