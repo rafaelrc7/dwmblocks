@@ -5,13 +5,21 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 	
-	{"",		PATH("update.sh"),		0,					5},
+	{"",		PATH("cpu.sh"),			5,					10},
+	{"",		PATH("memory.sh"),		5,					11},
+	{"",		PATH("gpu.sh"),			5,					12},
+
+	{"",		PATH("net.sh"),			1,					4},
+	
+	{"",		PATH("update.sh"),		0,					5},
 
 	{"",		PATH("time.sh"),		1,					1},
 
-	{"",		PATH("calendar.sh"),	0,					2},
+	{"",		PATH("calendar.sh"),	0,					2},
+
+	{"",		PATH("volume.sh"),		0,					3},
 
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
-static char delim = ' ';
+static char delim = '\0';
