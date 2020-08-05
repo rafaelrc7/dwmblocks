@@ -8,7 +8,6 @@ esac
 cache=/tmp/cpuusagecache
 procstat=$(awk 'NR==1{print $5; for (i=1;i<=NF;i++) t+=$i; print t}' /proc/stat)
 [ ! -f $cache ] && echo $procstat > $cache
-old=$(cat "$cache")
 idle_old=$(awk '{print $1}' $cache)
 total_old=$(awk '{print $2}' $cache)
 echo $procstat > $cache
@@ -22,4 +21,4 @@ cpu_usage=$((100 * $cpu_used / $total_delta))
 #CPU TEMP
 cpu_temp=$(sensors | awk -F"[+.]" '/Tctl/{print $2}')
 
-echo " [CPU ${cpu_usage}% ${cpu_temp}°C]"
+printf " [CPU %2d%% %2d°C]" $cpu_usage $cpu_temp

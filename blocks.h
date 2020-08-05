@@ -8,17 +8,14 @@ static const Block blocks[] = {
 	{"",		PATH("cpu.sh"),			5,					10},
 	{"",		PATH("memory.sh"),		5,					11},
 	{"",		PATH("gpu.sh"),			5,					12},
-
 	{"",		PATH("net.sh"),			1,					4},
 	
 	{"",		PATH("update.sh"),		0,					5},
 
-	{"",		PATH("time.sh"),		1,					1},
-
-	{"",		PATH("calendar.sh"),	0,					2},
-
 	{"",		PATH("volume.sh"),		0,					3},
 
+	{"",		PATH("calendar.sh"),	0,					2},
+	{"",		PATH("time.sh"),		1,					1},
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.

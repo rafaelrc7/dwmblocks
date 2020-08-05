@@ -1,5 +1,9 @@
 #!/bin/sh
 
+case $BUTTON in
+	3) st -c htop -e nethogs & ;;
+esac
+
 cache=/tmp/netusage
 
 tx_now=$(cat /sys/class/net/enp3s0/statistics/tx_bytes)
@@ -16,4 +20,4 @@ tx_delta=$(numfmt --from-unit=1024 --to=iec-i --suffix=B $(((tx_now - tx_old) / 
 rx_delta=$(numfmt --from-unit=1024 --to=iec-i --suffix=B $(((rx_now - rx_old) / 1024)))
 
 #echo " ${rx_delta}  ${tx_delta} "
-printf "[ %6s  %6s]" ${rx_delta} ${tx_delta}
+printf "[ %6s  %6s] " ${rx_delta} ${tx_delta}
