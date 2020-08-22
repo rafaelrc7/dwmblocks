@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash 
 
 case $BUTTON in
 	3) st -c htop -e htop --sort-key=PERCENT_CPU & ;;
@@ -13,10 +13,10 @@ total_old=$(awk '{print $2}' $cache)
 echo $procstat > $cache
 idle_now=$(sed -n '1p' <<< $procstat)
 total_now=$(sed -n '2p' <<< $procstat)
-total_delta=$(($total_now - $total_old))
-idle_delta=$(($idle_now - $idle_old))
-cpu_used=$(($total_delta - $idle_delta))
-cpu_usage=$((100 * $cpu_used / $total_delta))
+total_delta=$((total_now - total_old))
+idle_delta=$((idle_now - idle_old))
+cpu_used=$((total_delta - idle_delta))
+cpu_usage=$((100 * cpu_used / total_delta))
 
 #CPU TEMP
 cpu_temp=$(sensors | awk -F"[+.]" '/Tctl/{print $2}')

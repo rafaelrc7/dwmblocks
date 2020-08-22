@@ -18,7 +18,7 @@ case $(date '+%I') in
 	12) ICON="🕛";;
 esac
 
-if [ $TIME == "00:00:00" ]; then
+if [ $TIME = "00:00:00" ]; then
 	kill -36 $(pidof dwmblocks)
 fi
 
